@@ -1,9 +1,9 @@
 package com.example.rmontoya.seasonlist;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.example.rmontoya.seasonlist.adapters.SeasonsAdapter;
 import com.example.rmontoya.seasonlist.model.Seasons;
@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
         Seasons seasons = new Seasons();
 
-        ListView seasonsList = (ListView) findViewById(R.id.seasons_list);
-        SeasonsAdapter adapter = new SeasonsAdapter(this, android.R.layout.simple_list_item_1, Arrays.asList(seasons.getSeasonsArray()));
+        RecyclerView seasonsList = (RecyclerView) findViewById(R.id.seasons_list);
+        seasonsList.hasFixedSize();
+        seasonsList.setLayoutManager(new LinearLayoutManager(this));
+        SeasonsAdapter adapter = new SeasonsAdapter(Arrays.asList(seasons.getSeasonsArray()));
         seasonsList.setAdapter(adapter);
     }
 }

@@ -1,39 +1,46 @@
 package com.example.rmontoya.seasonlist.adapters;
 
-import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class SeasonsAdapter extends ArrayAdapter<String> {
+public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonViewHolder> {
 
-    private List<String> items;
+    private List<String> seasons;
 
-    public SeasonsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<String> objects) {
-        super(context, resource, objects);
-        items = objects;
+    public SeasonsAdapter(List<String> seasons) {
+        this.seasons = seasons;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, null);
-        }
-        TextView rowText = (TextView) convertView.findViewById(android.R.id.text1);
-        rowText.setText(items.get(position));
-        return convertView;
+    public SeasonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(android.R.layout.simple_list_item_1, parent, false);
+        return new SeasonViewHolder(view);
     }
 
-    public List<String> getItems() {
-        return items;
+    @Override
+    public void onBindViewHolder(SeasonViewHolder holder, int position) {
+        holder.rowText.setText(seasons.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return seasons.size();
+    }
+
+    class SeasonViewHolder extends RecyclerView.ViewHolder {
+        TextView rowText;
+
+        SeasonViewHolder(View itemView) {
+            super(itemView);
+            rowText = (TextView) itemView.findViewById(android.R.id.text1);
+
+        }
     }
 
 }

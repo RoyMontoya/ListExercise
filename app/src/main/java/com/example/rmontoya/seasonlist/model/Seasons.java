@@ -1,14 +1,20 @@
 package com.example.rmontoya.seasonlist.model;
 
-public class Seasons {
+public enum Seasons {
 
-    private String[] seasonsArray = {"Spring", "Summer", "Autumn", "Winter"};
+    SPRING("Spring"),
+    SUMMER("Summer"),
+    AUTUMN("Autumn"),
+    WINTER("Winter");
 
-    public Seasons() {
+    private String name;
+
+    Seasons(String seasonName) {
+        this.name = seasonName;
     }
 
-    public String[] getSeasonsArray() {
-        return seasonsArray;
+    public String getName() {
+        return name;
     }
 
 }

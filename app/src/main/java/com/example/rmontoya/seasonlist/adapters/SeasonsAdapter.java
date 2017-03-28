@@ -6,14 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.rmontoya.seasonlist.model.Seasons;
+
 import java.util.List;
 
 public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonViewHolder> {
 
-    private List<String> seasons;
+    private List<Seasons> seasons;
 
-    public SeasonsAdapter(List<String> seasons) {
-        this.seasons = seasons;
+    public SeasonsAdapter(List<Seasons> seasonsList) {
+        this.seasons = seasonsList;
     }
 
     @Override
@@ -25,7 +27,7 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonVi
 
     @Override
     public void onBindViewHolder(SeasonViewHolder holder, int position) {
-        holder.rowText.setText(seasons.get(position));
+        holder.rowText.setText(seasons.get(position).getName());
     }
 
     @Override

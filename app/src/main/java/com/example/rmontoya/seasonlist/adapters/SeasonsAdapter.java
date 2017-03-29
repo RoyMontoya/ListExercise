@@ -14,11 +14,11 @@ import com.example.rmontoya.seasonlist.model.Seasons;
 
 import java.util.List;
 
-public class SeasonsAdapter extends ArrayAdapter<Seasons> {
+public class SeasonsAdapter extends ArrayAdapter<String> {
 
-    private List<Seasons> items;
+    private List<String> items;
 
-    public SeasonsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Seasons> objects) {
+    public SeasonsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<String> objects) {
         super(context, resource, objects);
         items = objects;
     }
@@ -26,16 +26,21 @@ public class SeasonsAdapter extends ArrayAdapter<Seasons> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, null);
+            holder = new ViewHolder();
+            holder.rowText = (TextView) convertView.findViewById(android.R.id.text1);
+            convertView.setTag(holder);
+        }else{
+            holder = (ViewHolder) convertView.getTag();
         }
-        TextView rowText = (TextView) convertView.findViewById(android.R.id.text1);
-        rowText.setText(items.get(position).getName());
+        holder.rowText.setText(items.get(position));
         return convertView;
     }
 
-    public List<Seasons> getItems() {
-        return items;
+    private class ViewHolder {
+        private TextView rowText;
     }
 
 }

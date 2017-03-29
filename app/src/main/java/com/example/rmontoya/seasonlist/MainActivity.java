@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.rmontoya.seasonlist.adapters.SeasonsAdapter;
-import com.example.rmontoya.seasonlist.model.Seasons;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +16,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ListView seasonsList = (ListView) findViewById(R.id.seasons_list);
         SeasonsAdapter adapter = new SeasonsAdapter(this, android.R.layout.simple_list_item_1,
-                Arrays.asList(Seasons.values()));
+                makeElementsForList());
         seasonsList.setAdapter(adapter);
+    }
+
+    private List<String> makeElementsForList() {
+        List<String> elements = new ArrayList<>();
+        for (int i = 0; i < 500; i++) {
+            elements.add("element " + i);
+        }
+        return elements;
     }
 
 }

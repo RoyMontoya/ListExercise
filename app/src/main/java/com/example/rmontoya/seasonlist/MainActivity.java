@@ -17,12 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         RecyclerView seasonsList = (RecyclerView) findViewById(R.id.seasons_list);
         seasonsList.hasFixedSize();
         seasonsList.setLayoutManager(new LinearLayoutManager(this));
-        SeasonsAdapter adapter = new SeasonsAdapter(Arrays.asList(Seasons.values()));
+        SeasonsAdapter adapter = new SeasonsAdapter(Seasons.values());
         seasonsList.setAdapter(adapter);
     }
 }

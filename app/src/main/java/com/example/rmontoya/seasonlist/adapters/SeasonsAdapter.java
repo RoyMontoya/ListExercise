@@ -12,9 +12,9 @@ import java.util.List;
 
 public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonViewHolder> {
 
-    private List<Seasons> seasons;
+    private Seasons[] seasons;
 
-    public SeasonsAdapter(List<Seasons> seasonsList) {
+    public SeasonsAdapter(Seasons[] seasonsList) {
         this.seasons = seasonsList;
     }
 
@@ -27,12 +27,12 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonVi
 
     @Override
     public void onBindViewHolder(SeasonViewHolder holder, int position) {
-        holder.rowText.setText(seasons.get(position).getName());
+        holder.rowText.setText(seasons[position].getName());
     }
 
     @Override
     public int getItemCount() {
-        return seasons.size();
+        return seasons.length;
     }
 
     class SeasonViewHolder extends RecyclerView.ViewHolder {
@@ -41,7 +41,6 @@ public class SeasonsAdapter extends RecyclerView.Adapter<SeasonsAdapter.SeasonVi
         SeasonViewHolder(View itemView) {
             super(itemView);
             rowText = (TextView) itemView.findViewById(android.R.id.text1);
-
         }
     }
 

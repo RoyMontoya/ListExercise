@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.rmontoya.seasonlist.model.Seasons;
-
 import java.util.List;
 
 public class SeasonsAdapter extends ArrayAdapter<String> {
@@ -32,7 +30,7 @@ public class SeasonsAdapter extends ArrayAdapter<String> {
             holder = new ViewHolder();
             holder.rowText = (TextView) convertView.findViewById(android.R.id.text1);
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.rowText.setText(items.get(position));
